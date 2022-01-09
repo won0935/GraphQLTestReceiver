@@ -1,0 +1,15 @@
+version: "3" 
+services:
+  db: # 서비스 명
+    platform: linux/x86_64    # 추가된 라인
+    image: mysql:latest # 사용할 이미지
+    container_name: test-mysql # 컨테이너명 설정
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "root" # roor 계정 패스워드 설정
+    command: # 명령어
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    volumes: # 다렉토리 마운트 설정
+      - ./mysql:/var/lib/mysql
